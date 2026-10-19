@@ -16,7 +16,8 @@ import { localStorageWrapper } from './utils/local_storage_wrapper.js';
  * @readonly
  * @enum {number}
  */
-const PauseResumePrecedence = {
+export const PauseResumePrecedence = {
+  ladder: 4,
   pauseBtn: 3,
   messageBox: 2,
   dropdown: 1,
@@ -26,7 +27,7 @@ const PauseResumePrecedence = {
 /**
  * Manages pausing and resuming of the game
  */
-const pauseResumeManager = {
+export const pauseResumeManager = {
   /** @type {number} PauseResumePrecedence enum */
   _precedence: PauseResumePrecedence.notPaused,
   /**
@@ -51,6 +52,15 @@ const pauseResumeManager = {
       pikaVolley.paused = false;
       this._precedence = PauseResumePrecedence.notPaused;
     }
+  },
+  /**
+   * Force the game (and this manager's own state) back to not-paused,
+   * regardless of who currently holds the pause. Used for hard resets (e.g. logout).
+   * @param {PikachuVolleyball} pikaVolley
+   */
+  reset: function (pikaVolley) {
+    pikaVolley.paused = false;
+    this._precedence = PauseResumePrecedence.notPaused;
   },
 };
 

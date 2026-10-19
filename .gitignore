@@ -4,3 +4,4 @@ analytics.html
 .firebase/
 .firebaserc
 firebase.json
+server/pikavolley-data.json

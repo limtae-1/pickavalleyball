@@ -200,6 +200,13 @@
           </div>
         </div>
         <div class="btn-container right">
+          <div id="user-info" class="user-info-container ladder-hidden">
+            <span id="user-tier-badge" class="tier-badge"></span>
+            <span id="user-name-display"></span>
+            <span id="user-lp-display"></span>
+          </div>
+          <button type="button" id="leaderboard-btn" class="btn">리더보드</button>
+          <button type="button" id="logout-btn" class="btn ladder-hidden">로그아웃</button>
           <button type="button" id="about-btn" class="btn glow">
             <span class="text-about hidden">게임 소개</span
             ><span class="text-play">게임 시작</span>
@@ -227,148 +234,81 @@
       <div id="game-canvas-container">
         <div class="fade-in-box about" id="about-box">
           <div id="about-box-head">
-            <h1>피카츄 배구</h1>
-            <p class="languages">
-              <a href="../zh/" target="_self">Chinese(中文)</a>
-              | <a href="../en/" target="_self">English</a>
-              | &check; Korean(한국어)
-            </p>
-            <p class="p2p-online-version">
-              <a
-                href="https://gorisanson.github.io/pikachu-volleyball-p2p-online/ko/"
-                >P2P 온라인 버전</a
-              >도 있습니다.
-            </p>
-            <p class="super-ai-edition">
-              <a
-                href="https://pika.duckll.tw/ko/"
-                target="_blank"
-                rel="noopener"
-                >슈퍼 AI 버전</a
-              >(만든 사람:
-              <a href="https://blog.duckll.tw/" target="_blank" rel="noopener"
-                >DuckLL</a
-              >)도 있습니다.
-            </p>
-            <p class="original-by">
-              원조 피카츄 배구 (対戦ぴかちゅ～　ﾋﾞｰﾁﾊﾞﾚｰ編) 게임은 다음 분들이
-              만들었습니다.<br />
-              1997 (C)
-              <span class="no-wrap">SACHI SOFT / SAWAYAKAN Programmers</span
-              ><br />
-              1997 (C) <span class="no-wrap">Satoshi Takenouchi</span>
-            </p>
-            <p class="reverse-engineered-by">
-              원조 피카츄 배구 게임을 리버스 엔지니어링하여 웹 버전으로
-              만들었습니다.<br />
-              웹 버전으로 만든 사람:
-              <span class="no-wrap"
-                ><a href="https://gorisanson.github.io/">이규태</a></span
-              >
-            </p>
-            <p class="source-code-on">
-              소스 코드를
-              <a
-                href="https://github.com/gorisanson/pikachu-volleyball"
-                target="_blank"
-                rel="noopener"
-                >GitHub</a
-              >에서 볼 수 있습니다.
-            </p>
-            <p class="release-date">공개한 날: 2020-03-26</p>
-            <p class="update-history-on">
-              <a href="./update-history/" target="_self">업데이트 기록</a>
-            </p>
+            <h1>피카츄 배구 🏐</h1>
           </div>
-          <div class="margin-top limit-width">
-            <div class="align-center-horizontally">
-              <img
-                class="screenshot"
-                src="../resources/assets/images/screenshot.png"
-                width="1728"
-                height="1216"
-                alt="Pikachu Volleyball game screenshot"
-              />
-            </div>
-            <p>
-              피카츄 배구는 일본에서 1997년에 만들어진 윈도우용 게임입니다. 이
-              게임을 처음 접한 건 아마 초등학교 컴퓨터실에서였던 것으로
-              기억합니다. 친구들과 같이하면 정말 재미있지요. 어떤 분이 일본어
-              스프라이트를 한국어로 번역한 '피카츄 버전 한글판'이 나오기도
-              했습니다. (이 '피카츄 버전 한글판'의 한국어 스프라이트를 이 한국어
-              웹 버전에서도 사용했습니다.)
-            </p>
-            <p>
-              이 웹 버전은 원조 피카츄 배구 게임을 리버스 엔지니어링하여 이를
-              자바스크립트 코드로 구현한 것입니다. 이 웹 버전 게임은 웹 브라우저
-              상에서 직접 돌아가기 때문에 컴퓨터 운영체제에 상관 없이 플레이할
-              수 있습니다.
-            </p>
-            <p class="margin-top"><span class="thick">조작법:</span></p>
-            <div class="align-center-horizontally">
-              <img
-                class="controls"
-                src="../resources/assets/images/controls_ko.png"
-                width="1920"
-                height="984"
-                alt="game controls"
-              />
-              <p>
-                블루투스 키보드를 연결하면 스마트폰이나 태블릿에서도 플레이할 수
-                있습니다.
-              </p>
-            </div>
-            <p class="margin-top">
-              <span class="thick">팁 1:</span><br />
-              원조 게임에서도 그랬듯이,
-              <span class="no_wrap">"혼자서재미있게~"</span>를 선택할 때 "Z"
-              키를 눌러서 선택하면, 왼쪽 피카츄(1P)를 선택하여 컴퓨터와 플레이할
-              수 있습니다. 엔터(Enter) 키를 눌러서 선택하면, 오른쪽 피카츄(2P)를
-              선택하여 컴퓨터와 플레이할 수 있고요.
-            </p>
-            <p class="margin-top">
-              <span class="thick">팁 2:</span><br />
-              왼쪽 피카츄(1P)의 경우 아래 방향키로 "V" 키가 추가로 있습니다. "V"
-              키는 "F" 키와 작동 방식에 차이가 있으므로, 직접 사용해볼 수
-              있습니다. (<span class="no-wrap"
-                ><a
-                  href="https://twitter.com/repeat_c/status/1256494157884841984"
-                  target="_blank"
-                  rel="noopener"
-                  >@repeat_c님의 제보</a
-                ></span
-              >
-              덕분에, 원조 게임의 이 특성을 이 웹 버전에 반영할 수 있었습니다.)
-            </p>
-            <p class="margin-top">
-              <span class="thick">팁 3:</span><br />
-              메뉴 바를 숨기려면 (또는 다시 보이게 하려면), Esc 키를 누르면
-              됩니다.
-            </p>
-            <p class="margin-top">
-              <span class="thick">팁 4:</span><br />
-              원조 피카츄 배구에는 없는 "연습모드"를 추가했습니다.
-              <span class="no_wrap">"설정 &rarr; 연습모드 &rarr; 켜기"</span>를
-              누르면 활성화가 됩니다.
-            </p>
-            <p class="margin-top">
-              <span class="thick">팁 5:</span><br />
-              인터넷 연결 없이도 게임을 플레이 하고 싶은 경우에는 이 페이지를
-              앱으로 설치하면 됩니다. 컴퓨터에서는
-              <a
-                href="https://support.google.com/chrome/answer/9658361"
-                target="_blank"
-                rel="noopener"
-                >크롬 브라우저를 이용해 설치</a
-              >할 수 있습니다. 스마트폰이나 태블릿에서는 이 페이지를 "홈 화면에
-              추가"하면 됩니다.
-            </p>
+          <div class="limit-width about-guide">
+
+            <!-- 조작법 -->
+            <section class="guide-section">
+              <h2 class="guide-title">🎮 조작법</h2>
+              <div class="controls-grid">
+                <div class="controls-card">
+                  <p class="controls-player">1P (왼쪽)</p>
+                  <table class="key-table">
+                    <tr><td class="key">D / G</td><td>좌우 이동</td></tr>
+                    <tr><td class="key">R</td><td>점프</td></tr>
+                    <tr><td class="key">F / V</td><td>스매시</td></tr>
+                  </table>
+                </div>
+                <div class="controls-card">
+                  <p class="controls-player">2P (오른쪽)</p>
+                  <table class="key-table">
+                    <tr><td class="key">← →</td><td>좌우 이동</td></tr>
+                    <tr><td class="key">↑</td><td>점프</td></tr>
+                    <tr><td class="key">↓ / Enter</td><td>스매시</td></tr>
+                  </table>
+                </div>
+              </div>
+              <p class="guide-tip">💡 <strong>15점</strong> 먼저 획득하면 승리 (설정에서 5 / 10 / 15점 변경 가능)</p>
+            </section>
+
+            <!-- 게임 모드 -->
+            <section class="guide-section">
+              <h2 class="guide-title">🕹️ 게임 모드</h2>
+              <div class="mode-grid">
+                <div class="mode-card">
+                  <p class="mode-name">혼자서재미있게~</p>
+                  <p class="mode-desc">컴퓨터 AI와 1:1 대결.<br>랭킹에 반영되지 않습니다.</p>
+                </div>
+                <div class="mode-card ranked">
+                  <p class="mode-name">함께재미있게~ ⚔️</p>
+                  <p class="mode-desc">친구와 1:1 대결.<br>상대방 아이디를 입력하면<br><strong>랭킹에 반영됩니다.</strong></p>
+                </div>
+              </div>
+            </section>
+
+            <!-- 랭킹 시스템 -->
+            <section class="guide-section">
+              <h2 class="guide-title">🏆 랭킹 시스템</h2>
+              <div class="lp-info">
+                <span class="lp-badge win">승리 +20 LP</span>
+                <span class="lp-badge lose">패배 −15 LP</span>
+              </div>
+              <div class="tier-list">
+                <div class="tier-item" style="--tier-color:#8d99ae">⚙ 아이언 <span>0 ~ 99 LP</span></div>
+                <div class="tier-item" style="--tier-color:#cd7c50">🥉 브론즈 <span>100 ~ 199 LP</span></div>
+                <div class="tier-item" style="--tier-color:#adb5bd">🥈 실버 <span>200 ~ 299 LP</span></div>
+                <div class="tier-item" style="--tier-color:#e9c46a">🥇 골드 <span>300 ~ 399 LP</span></div>
+                <div class="tier-item" style="--tier-color:#2ec4b6">💎 플래티넘 <span>400 ~ 499 LP</span></div>
+                <div class="tier-item" style="--tier-color:#64dfdf">💠 다이아 <span>500 ~ 599 LP</span></div>
+                <div class="tier-item" style="--tier-color:#e040fb">👑 마스터 <span>600 LP 이상</span></div>
+              </div>
+            </section>
+
+            <!-- 랭크 게임 방법 -->
+            <section class="guide-section">
+              <h2 class="guide-title">📋 랭크 게임 진행 방법</h2>
+              <ol class="how-to-list">
+                <li>오른쪽 상단 <strong>로그인</strong>으로 계정 접속</li>
+                <li>게임 화면에서 <strong>함께재미있게~</strong> 선택</li>
+                <li>상대방 아이디 입력 후 <strong>확인</strong></li>
+                <li>15점 먼저 획득한 플레이어가 LP 획득</li>
+                <li>상단 <strong>리더보드</strong> 버튼으로 전체 순위 확인</li>
+              </ol>
+            </section>
+
             <div class="margin-top">
-              <button
-                type="button"
-                id="close-about-btn"
-                class="btn-in-box glow"
-              >
+              <button type="button" id="close-about-btn" class="btn-in-box glow">
                 <span class="text-close hidden">닫기</span
                 ><span class="text-play">게임 시작</span>
               </button>
@@ -421,6 +361,68 @@
         </div>
       </div>
     </div>
+    <!-- 로그인/회원가입 모달 -->
+    <div id="auth-modal" class="modal-overlay ladder-hidden">
+      <div class="modal-box">
+        <button type="button" id="auth-modal-close-btn" class="modal-close-btn" aria-label="닫기">&times;</button>
+        <h2>피카츄배구 랭킹</h2>
+        <div class="modal-tabs">
+          <button id="login-tab-btn" class="modal-tab active">로그인</button>
+          <button id="register-tab-btn" class="modal-tab">회원가입</button>
+        </div>
+        <div id="auth-error" class="modal-error ladder-hidden"></div>
+        <div class="modal-field">
+          <label>아이디</label>
+          <input type="text" id="auth-username" maxlength="12" placeholder="아이디 입력" autocomplete="username" />
+          <div id="auth-username-status" class="username-status ladder-hidden"></div>
+        </div>
+        <div class="modal-field">
+          <label>비밀번호</label>
+          <input type="password" id="auth-password" placeholder="비밀번호 입력" autocomplete="current-password" />
+        </div>
+        <button id="auth-submit-btn" class="modal-btn primary">로그인</button>
+        <button id="auth-guest-btn" class="modal-guest-btn">게스트로 플레이 (랭킹 제외)</button>
+      </div>
+    </div>
+
+    <!-- 2P 아이디 입력 모달 -->
+    <div id="p2-modal" class="modal-overlay ladder-hidden">
+      <div class="modal-box">
+        <h2>상대방 아이디 입력</h2>
+        <p style="font-size:0.9em;text-align:center;margin:0 0 14px">2P 플레이어의 아이디와 비밀번호를 입력해주세요.<br>본인 확인 후 결과가 랭킹에 반영됩니다.</p>
+        <div id="p2-error" class="modal-error ladder-hidden"></div>
+        <div class="modal-field">
+          <input type="text" id="p2-username" placeholder="상대방 아이디" maxlength="12" autocomplete="off" />
+        </div>
+        <div class="modal-field">
+          <input type="password" id="p2-password" placeholder="상대방 비밀번호" autocomplete="off" />
+        </div>
+        <div class="modal-actions">
+          <button id="p2-cancel-btn" class="modal-btn">취소 (기록 없음)</button>
+          <button id="p2-confirm-btn" class="modal-btn primary">확인</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 게임 결과 모달 -->
+    <div id="result-modal" class="modal-overlay ladder-hidden">
+      <div class="modal-box">
+        <h2 id="result-title"></h2>
+        <div id="result-p1" class="result-row"></div>
+        <div id="result-p2" class="result-row"></div>
+        <button id="result-close-btn" class="modal-btn primary" style="margin-top:16px">확인</button>
+      </div>
+    </div>
+
+    <!-- 리더보드 모달 -->
+    <div id="leaderboard-modal" class="modal-overlay ladder-hidden">
+      <div class="modal-box leaderboard-box">
+        <h2>🏆 리더보드</h2>
+        <div id="leaderboard-content"></div>
+        <button id="leaderboard-close-btn" class="modal-btn primary">닫기</button>
+      </div>
+    </div>
+
     <script type="module">
       /*
        * Register service worker with some configuration for service worker update notice.

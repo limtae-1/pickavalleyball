@@ -2,7 +2,6 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -112,11 +111,6 @@ module.exports = {
         collapseWhitespace: true,
         removeComments: true,
       },
-    }),
-    new WorkboxPlugin.GenerateSW({
-      swDest: 'sw.js',
-      cleanupOutdatedCaches: true,
-      skipWaiting: false,
     }),
   ],
 };

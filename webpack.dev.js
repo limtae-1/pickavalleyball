@@ -6,5 +6,7 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
     static: './dist',
+    host: '0.0.0.0',
+    allowedHosts: 'all',
   },
 });

@@ -103,6 +103,13 @@ export class PikachuVolleyball {
     /** @type {boolean} true: stereo, false: mono */
     this.isStereoSound = true;
 
+    /** @type {function(boolean, boolean):void|null} callback(player1Won, isWithFriend) */
+    this.onGameEnd = null;
+    /** @type {function():void|null} called before friend game, game is paused when invoked */
+    this.onBeforeWithFriendGame = null;
+    /** @type {string|null} P2 username for the current ranked match */
+    this._p2Username = null;
+
     /** @type {boolean} true: practice mode on, false: practice mode off */
     this._isPracticeMode = false;
 
@@ -242,6 +249,10 @@ export class PikachuVolleyball {
       this.frameCounter = 0;
       this.noInputFrameCounter = 0;
       this.state = this.afterMenuSelection;
+      if (this.selectedWithWho === 1 && this.onBeforeWithFriendGame) {
+        this.paused = true;
+        this.onBeforeWithFriendGame();
+      }
       return;
     }
 
@@ -380,6 +391,10 @@ export class PikachuVolleyball {
           this.physics.player2.isWinner = true;
           this.physics.player1.gameEnded = true;
           this.physics.player2.gameEnded = true;
+          if (this.onGameEnd) {
+            const isWithFriend = !this.physics.player1.isComputer && !this.physics.player2.isComputer;
+            this.onGameEnd(false, isWithFriend);
+          }
         }
       } else {
         this.isPlayer2Serve = false;
@@ -390,6 +405,10 @@ export class PikachuVolleyball {
           this.physics.player2.isWinner = false;
           this.physics.player1.gameEnded = true;
           this.physics.player2.gameEnded = true;
+          if (this.onGameEnd) {
+            const isWithFriend = !this.physics.player1.isComputer && !this.physics.player2.isComputer;
+            this.onGameEnd(true, isWithFriend);
+          }
         }
       }
       this.view.game.drawScoresToScoreBoards(this.scores);
@@ -509,6 +528,23 @@ export class PikachuVolleyball {
     this.view.menu.visible = false;
     this.view.game.visible = false;
     this.state = this.intro;
+  }
+
+  /**
+   * Skip the end-of-game fanfare and the intro replay, and go straight to the
+   * with-who (solo/friend) menu. Used after a ranked match's result modal is
+   * dismissed, so players don't lose their input window to the attract-mode
+   * intro before picking their next match.
+   */
+  returnToMenuAfterGame() {
+    this.gameEnded = false;
+    this.physics.player1.gameEnded = false;
+    this.physics.player2.gameEnded = false;
+    this.frameCounter = 0;
+    this.noInputFrameCounter = 0;
+    this.view.game.visible = false;
+    this.view.intro.visible = false;
+    this.state = this.menu;
   }
 
   /** @return {boolean} */
